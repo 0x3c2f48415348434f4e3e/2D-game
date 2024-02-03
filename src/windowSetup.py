@@ -16,6 +16,9 @@ class window:
         isMovingLeft = False
         isMovingRight = False
 
+        self.PlayerFlip = False #Direction facing right will be false by default
+        self.PlayerXDirection = 1
+
 
         playerGameObject = player.Player(initialX=100,initialY=100,screen=self.win)
         while running:
@@ -26,7 +29,7 @@ class window:
             window.bg(self.win)
 
             #get our events
-            playerGameObject.initiateBlit()
+            playerGameObject.initiateBlit(self.PlayerFlip,self.PlayerXDirection)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -39,10 +42,14 @@ class window:
                         print("Up key pressed")
                         #lets try making our player jump
                     if event.key == pygame.K_RIGHT:
+                        self.PlayerFlip = False
+                        self.PlayerXDirection = 1
                         isMovingRight = True
                         print("Right ", isMovingRight)
                     if event.key == pygame.K_LEFT:
                         print("Left key pressed")
+                        self.PlayerFlip = True
+                        self.PlayerXDirection = -1
                         isMovingLeft = True
                     
 
