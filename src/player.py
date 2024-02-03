@@ -1,15 +1,17 @@
 import Entity
 class Player(Entity.Entity):
-    path="../Assets/player.png"
+    characters =  [
+        "../Assets/player.png"
+    ]
     def __init__(self, initialX, initialY, screen):
-        path = Player.path
+        path = Player.characters[0]
         x = initialX
         y = initialY
         window = screen
         super().__init__(path,x,y,window)
 
-    def initiateBlit(self):
-        self.blitImg()
+    def initiateBlit(self,playerFlip,playerXDirection):
+        self.blitImg(playerFlip,playerXDirection)
     def move(self,movingRight,movingLeft):
         #note we are passing isFacingRight to this movingPosition
 
