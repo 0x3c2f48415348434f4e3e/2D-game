@@ -16,15 +16,15 @@ class Entity(pygame.sprite.Sprite):
         self.rect = self.img.get_rect()
         self.rect.center = (x,y)
 
-    def blitImg(self):
-        self.Screen.blit(self.img,self.rect)
+    def blitImg(self,playerFlip,playerXDirection):
+        self.Screen.blit(pygame.transform.flip(self.img,playerFlip,False),self.rect)
     def moveLeft(self):
         dx = 0
         dy = 0
         dx = (-self.speed)
         self.rect.x += dx
         self.rect.y += dy
-        
+
     def moveRight(self):
         dx = 0
         dy = 0
